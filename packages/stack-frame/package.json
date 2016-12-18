@@ -1,0 +1,9 @@
+{
+  "name": "stack-frame",
+  "version": "0.0.0",
+  "description": "A stack frame.",
+  "main": "index.js",
+  "repository": "Timer/stack-frame",
+  "author": "Joe Haddad <timer150@gmail.com>",
+  "license": "MIT"
+}
