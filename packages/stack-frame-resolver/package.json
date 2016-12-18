@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-resolver",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Resolves a set of stack frames into code frames.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
