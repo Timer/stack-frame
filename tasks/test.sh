@@ -3,4 +3,5 @@ cd ..
 
 set -x
 
+lerna run build
 lerna run test

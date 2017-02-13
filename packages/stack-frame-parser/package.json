@@ -2,8 +2,25 @@
   "name": "stack-frame-parser",
   "version": "0.0.0",
   "description": "Parses a stack trace into stack frames.",
-  "main": "index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build && npm test",
+    "build": "babel src/ -d lib/",
+    "test": "exit 0"
+  },
+  "main": "lib/index.js",
   "repository": "Timer/stack-frame",
   "author": "Joe Haddad <timer150@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "lib/"
+  ],
+  "dependencies": {
+    "stack-frame": "^0.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.2.1"
+  }
 }
