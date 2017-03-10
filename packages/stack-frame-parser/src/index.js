@@ -4,11 +4,17 @@ import StackFrame from 'stack-frame';
 const regexExtractLocation = /\(?(.+?)(?:\:(\d+))?(?:\:(\d+))?\)?$/;
 
 function extractLocation(token: string): [string, number, number] {
-  return regexExtractLocation.exec(token).slice(1);
+  return regexExtractLocation.exec(token).slice(1).map(v => {
+    const p = Number(v);
+    if (!isNaN(p)) {
+      return p;
+    }
+    return v;
+  });
 }
 
 const regexValidFrame_Chrome = /^\s*at\s.+(:\d+)/;
-const regexValidFrame_FireFox = /(^|@)\S+\:\d+/;
+const regexValidFrame_FireFox = /(^|@)\S+\:\d+|.+line\s+\d+\s+>\s+eval.+/;
 
 function parseStack(stack: string): StackFrame[] {
   const frames = stack
@@ -18,13 +24,26 @@ function parseStack(stack: string): StackFrame[] {
     )
     .map(e => {
       if (regexValidFrame_FireFox.test(e)) {
+        // Strip eval, we don't care about it
+        let isEval = false;
+        if (e.indexOf(' > eval') > -1) {
+          e = e.replace(
+            / line (\d+)(?: > eval line \d+)* > eval\:\d+\:\d+/g,
+            ':$1'
+          );
+          isEval = true;
+        }
         const data = e.split(/[@]/g);
         const last = data.pop();
         return new StackFrame(
-          data.join('@') || undefined,
+          data.join('@') || (isEval ? 'eval' : undefined),
           ...extractLocation(last)
         );
       } else {
+        // Strip eval, we don't care about it
+        if (e.indexOf('(eval ') !== -1) {
+          e = e.replace(/(\(eval at [^\()]*)|(\)\,.*$)/g, '');
+        }
         const data = e.trim().split(/\s+/g).slice(1);
         const last = data.pop();
         return new StackFrame(
