@@ -14,7 +14,6 @@ const expected = [
   {
     functionName: 'eval',
     fileName: 'file:///Users/joe/Documents/Development/OSS/stack-frame/index.html',
-    columnNumber: -1,
     lineNumber: 17,
   },
   {

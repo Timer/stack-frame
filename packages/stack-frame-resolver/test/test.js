@@ -10,7 +10,7 @@ const line = (function() {
   return errorLine;
 })();
 
-const StackTraceResolve = require('../lib');
+const StackTraceResolve = require('..');
 const resolve = StackTraceResolve.default,
   ResolvedStackFrame = require('stack-frame');
 const assert = require('assert');

@@ -16,7 +16,7 @@ class StackFrame {
   functionName: string | null;
   fileName: ?string;
   lineNumber: number;
-  columnNumber: number;
+  columnNumber: ?number;
 
   _originalFunctionName: ?string;
   _originalFileName: ?string;
@@ -30,7 +30,7 @@ class StackFrame {
     functionName: string | null,
     fileName: ?string = null,
     lineNumber: number = -1,
-    columnNumber: number = -1,
+    columnNumber: ?number = undefined,
     scriptCode: ?(ScriptLine[]),
     sourceFunctionName: ?string = null,
     sourceFileName: ?string = null,
@@ -62,7 +62,11 @@ class StackFrame {
     if (this.fileName != null) {
       prefix = `${this.fileName}:`;
     }
-    return `${prefix}${this.lineNumber}:${this.columnNumber}`;
+    let suffix = '';
+    if (this.columnNumber != null) {
+      suffix = `:${this.columnNumber}`;
+    }
+    return `${prefix}${this.lineNumber}${suffix}`;
   }
 
   toString(): string {
