@@ -1,8 +1,8 @@
 //@flow
 import StackFrame, { ScriptLine } from 'stack-frame';
 import { parse as parseError } from 'stack-frame-parser';
-import { SourceMapConsumer } from 'source-map';
 import settlePromises from 'settle-promise';
+import getSourceMap from 'stack-frame-utils/lib/getSourceMap';
 
 function getLinesAround(
   line: number,
@@ -21,35 +21,6 @@ function getLinesAround(
     result.push(new ScriptLine(index + 1, lines[index], index === line - 1));
   }
   return result;
-}
-
-async function getSourceMap(
-  file: string,
-  contents: string
-): Promise<SourceMapConsumer> {
-  const match = /\/\/[#@] ?sourceMappingURL=([^\s'"]+)\s*$/m.exec(contents);
-  if (!(match && match[1]))
-    throw new Error(`Source map not found for file: ${file}`);
-
-  let sm = match[1].toString();
-  if (sm.indexOf('data:') === 0) {
-    const base64 = /^data:application\/json;([\w=:"-]+;)*base64,/;
-    const match2 = sm.match(base64);
-    if (!match2) {
-      throw new Error(
-        'Sorry, non-base64 inline source-map encoding is not supported.'
-      );
-    }
-    sm = sm.substring(match2[0].length);
-    sm = window.atob(sm);
-    sm = JSON.parse(sm);
-    return new SourceMapConsumer(sm);
-  } else {
-    const index = file.lastIndexOf('/');
-    const url = file.substring(0, index + 1) + sm;
-    const obj = await fetch(url).then(res => res.json());
-    return new SourceMapConsumer(obj);
-  }
 }
 
 async function resolve(

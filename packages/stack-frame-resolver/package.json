@@ -9,7 +9,7 @@
     "test:headless": "npm run build && karma start --single-run --browsers PhantomJS"
   },
   "main": "lib/index.js",
-  "repository": "Timer/stack-frame",
+  "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-resolver",
   "author": "Joe Haddad <timer150@gmail.com>",
   "license": "MIT",
   "files": [
@@ -39,6 +39,7 @@
     "settle-promise": "^1.0.0",
     "source-map": "0.5.6",
     "stack-frame": "^0.0.0",
-    "stack-frame-parser": "^0.0.0"
+    "stack-frame-parser": "^0.0.0",
+    "stack-frame-utils": "^0.0.0"
   }
 }

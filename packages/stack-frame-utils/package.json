@@ -1,28 +1,32 @@
 {
-  "name": "stack-frame-parser",
+  "name": "stack-frame-utils",
   "version": "0.0.0",
-  "description": "Parses a stack trace into stack frames.",
+  "description": "Utilities for working with stack frames.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
     "build": "babel src/ -d lib/",
-    "test": "istanbul cover test/index.js"
+    "test": "exit 0"
   },
   "main": "lib/index.js",
-  "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-parser",
+  "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-utils",
   "author": "Joe Haddad <timer150@gmail.com>",
   "license": "MIT",
   "files": [
     "lib/"
   ],
-  "dependencies": {
-    "stack-frame": "^0.0.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.2.1",
-    "chalk": "^1.1.3",
-    "istanbul": "^0.4.5"
+    "source-map": "^0.5.6",
+    "stack-frame": "^0.0.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0"
+  },
+  "peerDependencies": {
+    "source-map": "^0.5.6",
+    "stack-frame": "^0.0.0"
   }
 }

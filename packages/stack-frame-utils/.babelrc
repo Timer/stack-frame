@@ -1,0 +1,18 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "ie": 9
+      },
+      "useBuiltIns": true
+    }]
+  ],
+  "plugins": [
+    "transform-flow-strip-types",
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}
