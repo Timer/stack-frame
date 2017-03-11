@@ -7,6 +7,9 @@ async function unmap(
   fileUri: string,
   fileContents: ?string
 ): Promise<StackFrame[]> {
+  if (fileContents == null) {
+    fileContents = await fetch(fileUri).then(res => res.text());
+  }
   const map = await getSourceMap(fileUri, fileContents);
   return frames.map(frame => {
     const { functionName, fileName, lineNumber, columnNumber } = frame;
