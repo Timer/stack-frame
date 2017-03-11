@@ -2,14 +2,7 @@
 import StackFrame, { ScriptLine } from 'stack-frame';
 import { parse as parseError } from 'stack-frame-parser';
 import { SourceMapConsumer } from 'source-map';
-
-async function awaitAll(promises: Promise<*>[]) {
-  for (const p of promises) {
-    try {
-      await p;
-    } catch (e) {}
-  }
-}
+import settlePromises from 'settle-promise';
 
 function getLinesAround(
   line: number,
@@ -87,7 +80,7 @@ async function resolve(
     } catch (e) {}
   }
 
-  await awaitAll(requests);
+  await settlePromises(requests);
 
   const sourcemaps = {};
   requests = [];
@@ -101,7 +94,7 @@ async function resolve(
     );
   }
 
-  await awaitAll(requests);
+  await settlePromises(requests);
 
   const resolved = [];
   for (let index = 0; index < frames.length; ++index) {

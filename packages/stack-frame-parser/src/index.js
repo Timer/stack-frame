@@ -20,7 +20,7 @@ function parseStack(stack: string): StackFrame[] {
   const frames = stack
     .split('\n')
     .filter(
-    e => regexValidFrame_Chrome.test(e) || regexValidFrame_FireFox.test(e)
+      e => regexValidFrame_Chrome.test(e) || regexValidFrame_FireFox.test(e)
     )
     .map(e => {
       if (regexValidFrame_FireFox.test(e)) {
@@ -45,7 +45,7 @@ function parseStack(stack: string): StackFrame[] {
           e = e.replace(/(\(eval at [^\()]*)|(\)\,.*$)/g, '');
         }
         if (e.indexOf('(at ') !== -1) {
-          e = e.replace(/\(at /, '(')
+          e = e.replace(/\(at /, '(');
         }
         const data = e.trim().split(/\s+/g).slice(1);
         const last = data.pop();
