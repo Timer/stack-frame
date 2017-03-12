@@ -1,6 +1,7 @@
 //@flow
 import StackFrame from 'stack-frame';
 import getSourceMap from 'stack-frame-utils/lib/getSourceMap';
+import path from 'path';
 
 async function unmap(
   frames: StackFrame[],
@@ -12,9 +13,24 @@ async function unmap(
   }
   const map = await getSourceMap(fileUri, fileContents);
   return frames.map(frame => {
-    const { functionName, fileName, lineNumber, columnNumber } = frame;
+    const { functionName, lineNumber, columnNumber } = frame;
+    let { fileName } = frame;
+    if (fileName) fileName = path.resolve(fileName);
+    const source = map.sources
+      .map(s => s.replace(/[\\]+/g, '/'))
+      .filter(s => {
+        s = path.resolve(s);
+        return s.indexOf(fileName) === s.length - fileName.length;
+      })
+      .map(s => s.split(path.sep))
+      .sort((a, b) => Math.sign(a.length - b.length))
+      .map(s => s.join(path.sep))
+      .map(s => s.split('node_modules'))
+      .sort((a, b) => Math.sign(a.length - b.length))
+      .map(s => s.join('node_modules'));
+    if (source.length < 1) return null;
     const { line, column } = map.generatedPositionFor({
-      source: fileName,
+      source: source[0],
       line: lineNumber,
       column: columnNumber,
     });
@@ -22,7 +38,7 @@ async function unmap(
       functionName,
       fileUri,
       line,
-      column,
+      column || null,
       undefined,
       functionName,
       fileName,

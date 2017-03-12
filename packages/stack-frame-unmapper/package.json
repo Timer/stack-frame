@@ -7,7 +7,7 @@
     "build": "babel src/ -d lib/",
     "test": "exit 0"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-unmapper",
   "author": "Joe Haddad <timer150@gmail.com>",
   "license": "MIT",
