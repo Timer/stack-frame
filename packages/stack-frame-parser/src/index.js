@@ -16,9 +16,8 @@ function extractLocation(token: string): [string, number, number] {
 const regexValidFrame_Chrome = /^\s*(at|in)\s.+(:\d+)/;
 const regexValidFrame_FireFox = /(^|@)\S+\:\d+|.+line\s+\d+\s+>\s+(eval|Function).+/;
 
-function parseStack(stack: string): StackFrame[] {
+function parseStack(stack: string[]): StackFrame[] {
   const frames = stack
-    .split('\n')
     .filter(
       e => regexValidFrame_Chrome.test(e) || regexValidFrame_FireFox.test(e)
     )
@@ -58,11 +57,20 @@ function parseStack(stack: string): StackFrame[] {
   return frames;
 }
 
-function parseError(error: Error): StackFrame[] {
-  if (error == null || typeof error.stack !== 'string') {
-    throw new Error('The error you provided does not contain a stack trace.');
+function parseError(error: Error | string | string[]): StackFrame[] {
+  if (error == null) {
+    throw new Error('You cannot pass a null object.');
   }
-  return parseStack(error.stack);
+  if (typeof error === 'string') {
+    return parseStack(error.split('\n'));
+  }
+  if (Array.isArray(error)) {
+    return parseStack(error);
+  }
+  if (typeof error.stack === 'string') {
+    return parseStack(error.stack.split('\n'));
+  }
+  throw new Error('The error you provided does not contain a stack trace.');
 }
 
 export { parseError as parse };
