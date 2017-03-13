@@ -165,8 +165,8 @@ inherits@2:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
 is-buffer@^1.0.2:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.4.tgz#cfc86ccd5dc5a52fa80489111c6920c457e2d98b"
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.5.tgz#1f3b26ef613b214b88cbca23cc6c01d87961eecc"
 
 isexe@^1.1.1:
   version "1.1.2"
@@ -307,9 +307,9 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
-stack-frame@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.0.0.tgz#8934a0802583d468ffcce1fe8b527ac0552fecb6"
+stack-frame@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.1.0.tgz#2058ff3f1a78c3871744372c9ad4aea40126c9c0"
 
 strip-ansi@^3.0.0:
   version "3.0.1"
@@ -334,8 +334,8 @@ type-check@~0.3.2:
     prelude-ls "~1.1.2"
 
 uglify-js@^2.6:
-  version "2.8.11"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.11.tgz#11a51c43d810b47bc00aee4d512cb3947ddd1ac4"
+  version "2.8.12"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.12.tgz#8a50f5d482243650b7108f6080aa3a6afe2a6c55"
   dependencies:
     source-map "~0.5.1"
     uglify-to-browserify "~1.0.0"
