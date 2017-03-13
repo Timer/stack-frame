@@ -1,7 +1,7 @@
 [ignore]
 
 [include]
-src/**/*.js
+packages/*/src/**/*.js
 
 [libs]
 

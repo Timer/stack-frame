@@ -13,11 +13,5 @@
   "license": "MIT",
   "files": [
     "lib/"
-  ],
-  "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.2.1"
-  }
+  ]
 }
