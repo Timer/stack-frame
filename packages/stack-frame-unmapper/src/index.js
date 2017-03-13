@@ -1,6 +1,6 @@
 //@flow
 import StackFrame from 'stack-frame';
-import getSourceMap from 'stack-frame-utils/lib/getSourceMap';
+import { getSourceMap, getLinesAround } from 'stack-frame-utils';
 import path from 'path';
 
 async function unmap(
@@ -42,17 +42,18 @@ async function unmap(
       line: lineNumber,
       column: columnNumber,
     });
+    const originalSource = map.sourceContentFor(source[0]);
     return new StackFrame(
       functionName,
       fileUri,
       line,
       column || null,
-      undefined,
+      getLinesAround(line, 3, fileContents),
       functionName,
       fileName,
       lineNumber,
       columnNumber,
-      undefined
+      getLinesAround(lineNumber, 3, originalSource)
     );
   });
 }

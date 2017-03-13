@@ -1,2 +1,3 @@
 import { getSourceMap } from './getSourceMap';
-export { getSourceMap };
+import { getLinesAround } from './getLinesAround';
+export { getSourceMap, getLinesAround };
