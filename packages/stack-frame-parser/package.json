@@ -4,7 +4,7 @@
   "description": "Parses a stack trace into stack frames.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
-    "build": "babel src/ -d lib/",
+    "build": "../../node_modules/.bin/babel src/ -d lib/",
     "test": "istanbul cover test/index.js"
   },
   "main": "lib/index.js",
