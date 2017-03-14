@@ -42,7 +42,10 @@ async function unmap(
       .map(s => s.join(path.sep))
       .map(s => s.split('node_modules'))
       .sort((a, b) => Math.sign(a.length - b.length))
-      .map(s => s.join('node_modules'));
+      .map(s => s.join('node_modules'))
+      .map(s => s.split('~'))
+      .sort((a, b) => Math.sign(a.length - b.length))
+      .map(s => s.join('~'));
     if (source.length < 1) return null;
     const { line, column } = map.getGeneratedPosition(
       source[0],
