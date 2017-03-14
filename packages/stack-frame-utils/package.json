@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Utilities for working with stack frames.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
@@ -19,9 +19,9 @@
     "source-map": "^0.5.6"
   },
   "devDependencies": {
-    "stack-frame": "^0.1.0"
+    "stack-frame": "^0.1.1"
   },
   "peerDependencies": {
-    "stack-frame": "^0.1.0"
+    "stack-frame": "^0.1.1"
   }
 }

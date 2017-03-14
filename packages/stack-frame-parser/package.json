@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Parses a stack trace into stack frames.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
@@ -15,7 +15,7 @@
     "lib/"
   ],
   "dependencies": {
-    "stack-frame": "^0.1.0"
+    "stack-frame": "^0.1.1"
   },
   "devDependencies": {
     "chalk": "^1.1.3",
