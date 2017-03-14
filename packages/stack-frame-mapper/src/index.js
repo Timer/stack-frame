@@ -6,8 +6,12 @@ import { settle } from 'settle-promise';
 /**
  * Enhances a set of <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>s with their original positions and code (when available).
  * @param {StackFrame[]} frames A set of <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>s which contain (generated) code positions.
+ * @param {number} contextLines The number of lines to provide before and after the line specified in the <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>.
  */
-async function map(frames: StackFrame[]): Promise<StackFrame[]> {
+async function map(
+  frames: StackFrame[],
+  contextLines: number = 3
+): Promise<StackFrame[]> {
   const cache = {};
   const files = [];
   frames.forEach(frame => {
@@ -38,12 +42,12 @@ async function map(frames: StackFrame[]): Promise<StackFrame[]> {
       fileName,
       lineNumber,
       columnNumber,
-      getLinesAround(lineNumber, 3, fileSource),
+      getLinesAround(lineNumber, contextLines, fileSource),
       functionName,
       source,
       line,
       column,
-      getLinesAround(line, 3, originalSource)
+      getLinesAround(line, contextLines, originalSource)
     );
   });
 }
