@@ -11,7 +11,7 @@ async function map(frames: StackFrame[]): Promise<StackFrame[]> {
   return await Promise.all(
     frames.map(async frame => {
       const { functionName, fileName, lineNumber, columnNumber } = frame;
-      let { map, fileSource } = cache[fileName];
+      let { map, fileSource } = cache[fileName] || {};
       if (map == null) {
         fileSource = await fetch(fileName).then(r => r.text());
         map = await getSourceMap(fileName, fileSource);
@@ -21,7 +21,7 @@ async function map(frames: StackFrame[]): Promise<StackFrame[]> {
         lineNumber,
         columnNumber
       );
-      const originalSource = map.getSourceMap(source);
+      const originalSource = source == null ? [] : map.getSource(source);
       return new StackFrame(
         functionName,
         fileName,
