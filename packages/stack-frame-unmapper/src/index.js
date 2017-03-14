@@ -38,11 +38,11 @@ async function unmap(
       .sort((a, b) => Math.sign(a.length - b.length))
       .map(s => s.join('node_modules'));
     if (source.length < 1) return null;
-    const { line, column } = map.getGeneratedPosition({
-      source: source[0],
-      line: lineNumber,
-      column: columnNumber,
-    });
+    const { line, column } = map.getGeneratedPosition(
+      source[0],
+      lineNumber,
+      columnNumber
+    );
     const originalSource = map.getSource(source[0]);
     return new StackFrame(
       functionName,
