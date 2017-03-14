@@ -24,7 +24,8 @@ async function unmap(
     }
     let { fileName } = frame;
     if (fileName) fileName = path.resolve(fileName);
-    const source = map.sources
+    const source = map
+      .getSources()
       .map(s => s.replace(/[\\]+/g, '/'))
       .filter(s => {
         s = path.resolve(s);
@@ -37,12 +38,12 @@ async function unmap(
       .sort((a, b) => Math.sign(a.length - b.length))
       .map(s => s.join('node_modules'));
     if (source.length < 1) return null;
-    const { line, column } = map.generatedPositionFor({
+    const { line, column } = map.getGeneratedPosition({
       source: source[0],
       line: lineNumber,
       column: columnNumber,
     });
-    const originalSource = map.sourceContentFor(source[0]);
+    const originalSource = map.getSource(source[0]);
     return new StackFrame(
       functionName,
       fileUri,

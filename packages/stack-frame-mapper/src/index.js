@@ -13,11 +13,11 @@ async function map(frames: StackFrame[]): Promise<StackFrame[]> {
         map = await getSourceMap(fileName, fileSource);
         cache[fileName] = { map, fileSource };
       }
-      const { source, line, column } = map.originalPositionFor({
+      const { source, line, column } = map.getOriginalPosition({
         line: lineNumber,
         column: columnNumber,
       });
-      const originalSource = map.sourceContentFor(source);
+      const originalSource = map.getSourceMap(source);
       return new StackFrame(
         functionName,
         fileName,
