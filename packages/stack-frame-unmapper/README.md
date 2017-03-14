@@ -8,11 +8,11 @@ Unmaps a stack frame.
 
 ## unmap
 
-Turns a set of mapped <code>StackFrame</code>s back into their generated code position and enhances them with code.
+Turns a set of mapped <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s back into their generated code position and enhances them with code.
 
 **Parameters**
 
--   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>StackFrame</code>s which are already mapped and missing their generated positions.
+-   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s which are already mapped and missing their generated positions.
 -   `fileUri` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The URI of the <code>bundle.js</code> file.
 -   `fileContents` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional. The contents of the file. Providing this prevents an extra fetch.
 

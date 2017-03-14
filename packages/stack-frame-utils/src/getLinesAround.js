@@ -1,10 +1,16 @@
 //@flow
 import { ScriptLine } from 'stack-frame';
 
+/**
+ *
+ * @param {number} line The line number to provide context around.
+ * @param {number} count The number of lines you'd like for context.
+ * @param {string[] | string} lines The source code.
+ */
 function getLinesAround(
   line: number,
   count: number,
-  lines: string[] = []
+  lines: string[] | string
 ): ScriptLine[] {
   if (typeof lines === 'string') {
     lines = lines.split('\n');

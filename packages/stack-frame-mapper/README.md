@@ -8,10 +8,10 @@ Maps a stack frame to a sourcemap.
 
 ## map
 
-Enhances a set of <code>StackFrame</code>s with their original positions and code (when available).
+Enhances a set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s with their original positions and code (when available).
 
 **Parameters**
 
--   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>StackFrame</code>s which contain (generated) code positions.
+-   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s which contain (generated) code positions.
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>>** 

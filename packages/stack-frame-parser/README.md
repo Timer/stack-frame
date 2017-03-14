@@ -8,7 +8,7 @@ Parses a stack trace into stack frames.
 
 ## parse
 
-Turns an <code>Error</code>, or similar object, into a set of <code>StackFrame</code>s.
+Turns an <code>Error</code>, or similar object, into a set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s.
 
 **Parameters**
 
