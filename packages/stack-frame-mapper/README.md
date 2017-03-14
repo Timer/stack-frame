@@ -13,6 +13,6 @@ Enhances a set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/m
 **Parameters**
 
 -   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s which contain (generated) code positions.
--   `contextLines` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?= 3** The number of lines to provide before and after the line specified in the <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>.
+-   `contextLines` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Optional. The number of lines to provide before and after the line specified in the <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>. (optional, default `3`)
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>>** 

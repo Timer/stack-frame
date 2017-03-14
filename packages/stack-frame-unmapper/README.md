@@ -12,8 +12,9 @@ Turns a set of mapped <code>[StackFrame](https://github.com/Timer/stack-frame/tr
 
 **Parameters**
 
--   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s which are already mapped and missing their generated positions.
 -   `fileUri` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The URI of the <code>bundle.js</code> file.
--   `fileContents` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** Optional. The contents of the file. Providing this prevents an extra fetch.
+-   `frames` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>** A set of <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>s which are already mapped and missing their generated positions.
+-   `fileContents` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Optional. The number of lines to provide before and after the line specified in the <code>[StackFrame](https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe)</code>. (optional, default `3`)
+-   `contextLines` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?**  (optional, default `3`)
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;StackFrame>>** 
