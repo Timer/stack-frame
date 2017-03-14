@@ -1,8 +1,12 @@
 //@flow
 
+/** A container holding a script line. */
 class ScriptLine {
+  /** The line number of this line of source. */
   lineNumber: number;
+  /** The content (or value) of this line of source. */
   content: string;
+  /** Whether or not this line should be highlighted. Particularly useful for error reporting with context. */
   highlight: boolean;
 
   constructor(lineNumber: number, content: string, highlight: boolean = false) {
@@ -12,6 +16,9 @@ class ScriptLine {
   }
 }
 
+/**
+ * A representation of a stack frame.
+ */
 class StackFrame {
   functionName: string | null;
   fileName: ?string;
@@ -53,10 +60,17 @@ class StackFrame {
     this._originalScriptCode = sourceScriptCode;
   }
 
+  /**
+   * Returns the name of this function.
+   */
   getFunctionName(): string | null {
     return this.functionName;
   }
 
+  /**
+   * Returns the source of the frame.
+   * This contains the file name, line number, and column number when available.
+   */
   getSource(): string {
     let prefix = '';
     if (this.fileName != null) {
@@ -69,6 +83,9 @@ class StackFrame {
     return `${prefix}${this.lineNumber}${suffix}`;
   }
 
+  /**
+   * Returns a pretty version of this stack frame.
+   */
   toString(): string {
     const f = this.getFunctionName();
     if (f == null) return this.getSource();

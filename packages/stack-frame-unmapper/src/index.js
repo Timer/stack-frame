@@ -3,6 +3,12 @@ import StackFrame from 'stack-frame';
 import { getSourceMap, getLinesAround } from 'stack-frame-utils';
 import path from 'path';
 
+/**
+ * Turns a set of mapped <code>StackFrame</code>s back into their generated code position and enhances them with code.
+ * @param {StackFrame[]} frames A set of <code>StackFrame</code>s which are already mapped and missing their generated positions.
+ * @param {string} fileUri The URI of the <code>bundle.js</code> file.
+ * @param {?string} fileContents Optional. The contents of the file. Providing this prevents an extra fetch.
+ */
 async function unmap(
   frames: StackFrame[],
   fileUri: string,

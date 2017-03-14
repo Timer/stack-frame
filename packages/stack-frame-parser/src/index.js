@@ -57,6 +57,10 @@ function parseStack(stack: string[]): StackFrame[] {
   return frames;
 }
 
+/**
+ * Turns an <code>Error</code>, or similar object, into a set of <code>StackFrame</code>s.
+ * @alias parse
+ */
 function parseError(error: Error | string | string[]): StackFrame[] {
   if (error == null) {
     throw new Error('You cannot pass a null object.');

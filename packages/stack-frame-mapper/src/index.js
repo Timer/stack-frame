@@ -2,6 +2,10 @@
 import StackFrame from 'stack-frame';
 import { getSourceMap, getLinesAround } from 'stack-frame-utils';
 
+/**
+ * Enhances a set of <code>StackFrame</code>s with their original positions and code (when available).
+ * @param {StackFrame[]} frames A set of <code>StackFrame</code>s which contain (generated) code positions.
+ */
 async function map(frames: StackFrame[]): Promise<StackFrame[]> {
   const cache = {};
   return await Promise.all(
