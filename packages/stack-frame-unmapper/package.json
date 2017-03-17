@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-unmapper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Unmaps a stack frame.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "stack-frame": "^0.1.1",
-    "stack-frame-utils": "^0.2.0"
+    "stack-frame": "^0.2.0",
+    "stack-frame-utils": "^0.3.0"
   }
 }
