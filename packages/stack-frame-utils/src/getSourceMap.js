@@ -1,6 +1,22 @@
 //@flow
 import { SourceMapConsumer } from 'source-map';
 
+function extractSourceMapUrl(fileUri: string, fileContents: string) {
+  const regex = /\/\/[#@] ?sourceMappingURL=([^\s'"]+)\s*$/mg;
+  let match = null;
+  for (;;) {
+    let next = regex.exec(fileContents);
+    if (next == null) {
+      break;
+    }
+    match = next;
+  }
+  if (!(match && match[1])) {
+    return Promise.reject(`Cannot find a source map directive for ${fileUri}.`);
+  }
+  return Promise.resolve(match[1].toString());
+}
+
 /**
  * Returns an instance of <code>{@link SourceMap}</code> for a given fileUri and fileContents.
  * @param {string} fileUri The URI of the source file.
@@ -10,11 +26,7 @@ async function getSourceMap(
   fileUri: string,
   fileContents: string
 ): Promise<SourceMap> {
-  const match = /\/\/[#@] ?sourceMappingURL=([^\s'"]+)\s*$/m.exec(fileContents);
-  if (!(match && match[1]))
-    throw new Error(`Source map not found for file: ${fileUri}`);
-
-  let sm = match[1].toString();
+  let sm = await extractSourceMapUrl(fileUri, fileContents);
   if (sm.indexOf('data:') === 0) {
     const base64 = /^data:application\/json;([\w=:"-]+;)*base64,/;
     const match2 = sm.match(base64);
@@ -93,5 +105,5 @@ class SourceMap {
   }
 }
 
-export { getSourceMap };
+export { extractSourceMapUrl, getSourceMap };
 export default getSourceMap;
