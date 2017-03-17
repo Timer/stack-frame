@@ -21,13 +21,19 @@ source-map@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
-stack-frame-utils@^0.2.0:
+stack-frame-parser@^0.2.0:
   version "0.2.0"
-  resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.2.0.tgz#323c00d010e2ee9b2181d64009de098c0720952d"
+  resolved "https://registry.yarnpkg.com/stack-frame-parser/-/stack-frame-parser-0.2.0.tgz#d7ab1f18ce55b81a703b3f679546bcb39960ce74"
+  dependencies:
+    stack-frame "^0.2.0"
+
+stack-frame-utils@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.3.0.tgz#84108ac8c34e49092d4c0e2545790cc494112a03"
   dependencies:
     babel-runtime "^6.23.0"
     source-map "^0.5.6"
 
-stack-frame@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.1.1.tgz#5c26cf274313e644ce4fe4fa4cc7c5da72e201c2"
+stack-frame@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.2.0.tgz#e35090373f6f847112d87d1362587d08c8ed92f2"

@@ -7,7 +7,7 @@ import path from 'path';
  * Turns a set of mapped <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>s back into their generated code position and enhances them with code.
  * @param {string} fileUri The URI of the <code>bundle.js</code> file.
  * @param {StackFrame[]} frames A set of <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>s which are already mapped and missing their generated positions.
- * @param {number} [fileContents=3] Optional. The number of lines to provide before and after the line specified in the <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>.
+ * @param {number} [fileContents=3] The number of lines to provide before and after the line specified in the <code>{@link https://github.com/Timer/stack-frame/tree/master/packages/stack-frame#stackframe StackFrame}</code>.
  */
 async function unmap(
   fileUri: string | { uri: string, contents: string },
@@ -31,13 +31,13 @@ async function unmap(
       return frame;
     }
     let { fileName } = frame;
-    if (fileName) fileName = path.resolve(fileName);
+    if (fileName) fileName = path.normalize(fileName);
     const splitCache1 = {}, splitCache2 = {}, splitCache3 = {};
     const source = map
       .getSources()
       .map(s => s.replace(/[\\]+/g, '/'))
       .filter(s => {
-        s = path.resolve(s);
+        s = path.normalize(s);
         return s.indexOf(fileName) === s.length - fileName.length;
       })
       .sort((a, b) => {
@@ -55,7 +55,20 @@ async function unmap(
         b = splitCache3[b] || (splitCache3[b] = b.split('~'));
         return Math.sign(a.length - b.length);
       });
-    if (source.length < 1) return null;
+    if (source.length < 1) {
+      return new StackFrame(
+        null,
+        null,
+        null,
+        null,
+        null,
+        functionName,
+        fileName,
+        lineNumber,
+        columnNumber,
+        null
+      );
+    }
     const { line, column } = map.getGeneratedPosition(
       source[0],
       lineNumber,
@@ -67,12 +80,12 @@ async function unmap(
       fileUri,
       line,
       column || null,
-      getLinesAround(line, 3, fileContents),
+      getLinesAround(line, contextLines, fileContents),
       functionName,
       fileName,
       lineNumber,
       columnNumber,
-      getLinesAround(lineNumber, 3, originalSource)
+      getLinesAround(lineNumber, contextLines, originalSource)
     );
   });
 }

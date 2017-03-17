@@ -90,11 +90,15 @@ class SourceMap {
     line: number,
     column: number
   ): { line: number, column: number } {
-    return this.__source_map.generatedPositionFor({
+    const { line: l, column: c } = this.__source_map.generatedPositionFor({
       source,
       line,
       column,
     });
+    return {
+      line: l,
+      column: c,
+    };
   }
 
   /**
