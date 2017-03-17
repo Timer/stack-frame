@@ -5,7 +5,7 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
     "build": "../../node_modules/.bin/babel src/ -d lib/",
-    "test": "exit 0"
+    "test": "../../node_modules/.bin/jest"
   },
   "main": "lib/index.js",
   "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame",
@@ -13,5 +13,20 @@
   "license": "MIT",
   "files": [
     "lib/"
-  ]
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    },
+    "coverageReporters": [
+      "json"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ]
+  }
 }

@@ -34,9 +34,9 @@ class StackFrame {
   _originalScriptCode: ScriptLine[] | null;
 
   constructor(
-    functionName: string | null,
+    functionName: string | null = null,
     fileName: string | null = null,
-    lineNumber: number = -1,
+    lineNumber: number | null = null,
     columnNumber: number | null = null,
     scriptCode: ScriptLine[] | null = null,
     sourceFunctionName: string | null = null,
@@ -95,5 +95,5 @@ class StackFrame {
   }
 }
 
-export { ScriptLine };
+export { StackFrame, ScriptLine };
 export default StackFrame;
