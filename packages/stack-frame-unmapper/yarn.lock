@@ -17,12 +17,17 @@ regenerator-runtime@^0.10.0:
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.3.tgz#8c4367a904b51ea62a908ac310bf99ff90a82a3e"
 
-stack-frame-utils@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.1.0.tgz#1d9184e1ef59fc89338e213f1819163a0eda7564"
+source-map@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+
+stack-frame-utils@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.2.0.tgz#323c00d010e2ee9b2181d64009de098c0720952d"
   dependencies:
     babel-runtime "^6.23.0"
+    source-map "^0.5.6"
 
-stack-frame@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.1.0.tgz#2058ff3f1a78c3871744372c9ad4aea40126c9c0"
+stack-frame@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.1.1.tgz#5c26cf274313e644ce4fe4fa4cc7c5da72e201c2"

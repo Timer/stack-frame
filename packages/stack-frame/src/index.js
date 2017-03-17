@@ -21,29 +21,29 @@ class ScriptLine {
  */
 class StackFrame {
   functionName: string | null;
-  fileName: ?string;
-  lineNumber: number;
-  columnNumber: ?number;
+  fileName: string | null;
+  lineNumber: number | null;
+  columnNumber: number | null;
 
-  _originalFunctionName: ?string;
-  _originalFileName: ?string;
-  _originalLineNumber: ?number;
-  _originalColumnNumber: ?number;
+  _originalFunctionName: string | null;
+  _originalFileName: string | null;
+  _originalLineNumber: number | null;
+  _originalColumnNumber: number | null;
 
-  _scriptCode: ?(ScriptLine[]);
-  _originalScriptCode: ?(ScriptLine[]);
+  _scriptCode: ScriptLine[] | null;
+  _originalScriptCode: ScriptLine[] | null;
 
   constructor(
     functionName: string | null,
-    fileName: ?string = null,
+    fileName: string | null = null,
     lineNumber: number = -1,
-    columnNumber: ?number = undefined,
-    scriptCode: ?(ScriptLine[]),
-    sourceFunctionName: ?string = null,
-    sourceFileName: ?string = null,
-    sourceLineNumber: ?number = null,
-    sourceColumnNumber: ?number = null,
-    sourceScriptCode: ?(ScriptLine[])
+    columnNumber: number | null = null,
+    scriptCode: ScriptLine[] | null = null,
+    sourceFunctionName: string | null = null,
+    sourceFileName: string | null = null,
+    sourceLineNumber: number | null = null,
+    sourceColumnNumber: number | null = null,
+    sourceScriptCode: ScriptLine[] | null = null
   ) {
     this.functionName = functionName;
 
@@ -72,15 +72,17 @@ class StackFrame {
    * This contains the file name, line number, and column number when available.
    */
   getSource(): string {
-    let prefix = '';
+    let str = '';
     if (this.fileName != null) {
-      prefix = `${this.fileName}:`;
+      str += this.fileName + ':';
     }
-    let suffix = '';
+    if (this.lineNumber != null) {
+      str += this.lineNumber + ':';
+    }
     if (this.columnNumber != null) {
-      suffix = `:${this.columnNumber}`;
+      str += this.columnNumber + ':';
     }
-    return `${prefix}${this.lineNumber}${suffix}`;
+    return str.slice(0, -1);
   }
 
   /**

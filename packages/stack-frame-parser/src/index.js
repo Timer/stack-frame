@@ -35,7 +35,7 @@ function parseStack(stack: string[]): StackFrame[] {
         const data = e.split(/[@]/g);
         const last = data.pop();
         return new StackFrame(
-          data.join('@') || (isEval ? 'eval' : undefined),
+          data.join('@') || (isEval ? 'eval' : null),
           ...extractLocation(last)
         );
       } else {
@@ -48,10 +48,7 @@ function parseStack(stack: string[]): StackFrame[] {
         }
         const data = e.trim().split(/\s+/g).slice(1);
         const last = data.pop();
-        return new StackFrame(
-          data.join(' ') || undefined,
-          ...extractLocation(last)
-        );
+        return new StackFrame(data.join(' ') || null, ...extractLocation(last));
       }
     });
   return frames;

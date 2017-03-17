@@ -5,7 +5,7 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
     "build": "../../node_modules/.bin/babel src/ -d lib/",
-    "test": "jest"
+    "test": "../../node_modules/.bin/jest"
   },
   "main": "lib/index.js",
   "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-utils",
@@ -19,7 +19,6 @@
     "source-map": "^0.5.6"
   },
   "devDependencies": {
-    "jest": "^19.0.2",
     "stack-frame": "^0.1.1"
   },
   "peerDependencies": {
@@ -27,7 +26,9 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["json"],
+    "coverageReporters": [
+      "json"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
       "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
