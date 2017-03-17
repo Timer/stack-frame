@@ -25,6 +25,12 @@ source-map@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
+stack-frame-parser@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/stack-frame-parser/-/stack-frame-parser-0.1.1.tgz#dfb00f24675ebf93a986cf6445b02cfcdaa63170"
+  dependencies:
+    stack-frame "^0.1.1"
+
 stack-frame-utils@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.2.0.tgz#323c00d010e2ee9b2181d64009de098c0720952d"

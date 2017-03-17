@@ -5,7 +5,7 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
     "build": "../../node_modules/.bin/babel src/ -d lib/",
-    "test": "exit 0"
+    "test": "../../node_modules/.bin/jest"
   },
   "main": "lib/index.js",
   "repository": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-mapper",
@@ -19,5 +19,26 @@
     "settle-promise": "^1.0.0",
     "stack-frame": "^0.1.1",
     "stack-frame-utils": "^0.2.0"
+  },
+  "devDependencies": {
+    "stack-frame-parser": "^0.1.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./src/__tests__/setupJest.js"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/fixtures/",
+      "setupJest.js"
+    ]
   }
 }
