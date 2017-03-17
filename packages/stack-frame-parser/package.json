@@ -22,6 +22,11 @@
   },
   "jest": {
     "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    },
     "coverageReporters": [
       "json"
     ],
