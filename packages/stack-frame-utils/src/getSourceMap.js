@@ -68,10 +68,15 @@ class SourceMap {
     line: number,
     column: number
   ): { source: string, line: number, column: number } {
-    return this.__source_map.originalPositionFor({
+    const {
+      line: l,
+      column: c,
+      source: s,
+    } = this.__source_map.originalPositionFor({
       line,
       column,
     });
+    return { line: l, column: c, source: s };
   }
 
   /**

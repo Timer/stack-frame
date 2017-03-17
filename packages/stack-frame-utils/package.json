@@ -25,6 +25,9 @@
     "stack-frame": "^0.1.1"
   },
   "jest": {
+    "setupFiles": [
+      "./src/__tests__/setupJest.js"
+    ],
     "collectCoverage": true,
     "coverageReporters": [
       "json"
@@ -32,6 +35,11 @@
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
       "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/fixtures/",
+      "setupJest.js"
     ]
   }
 }
