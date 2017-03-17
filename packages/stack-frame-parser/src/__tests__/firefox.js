@@ -5,7 +5,7 @@ test('eval 1', () => {
     parse(
       `test1@file:///C:/example.html line 7 > eval line 1 > eval:1:1
 test2@file:///C:/example.html line 7 > eval:1:1
-test3@file:///C:/example.html:7:6`
+test3@file:///C:/example.html:7:6`.split('\n')
     )
   ).toEqual([
     {
@@ -49,10 +49,10 @@ test3@file:///C:/example.html:7:6`
 
 test('eval 2', () => {
   expect(
-    parse(
-      `anonymous@file:///C:/example.html line 7 > Function:1:1
-@file:///C:/example.html:7:6`
-    )
+    parse({
+      stack: `anonymous@file:///C:/example.html line 7 > Function:1:1
+@file:///C:/example.html:7:6`,
+    })
   ).toEqual([
     {
       fileName: 'file:///C:/example.html',
