@@ -50,3 +50,25 @@ test('default context (3)', async () => {
     )
   );
 });
+
+test('bad comes back same', async () => {
+  expect.assertions(2);
+  const error = 'TypeError: document.body.missing is not a function\n    at App.componentDidMount (A:1:2)';
+  const orig = parse(error);
+  expect(orig).toEqual([
+    {
+      _originalColumnNumber: null,
+      _originalFileName: null,
+      _originalFunctionName: null,
+      _originalLineNumber: null,
+      _originalScriptCode: null,
+      _scriptCode: null,
+      columnNumber: 2,
+      fileName: 'A',
+      functionName: 'App.componentDidMount',
+      lineNumber: 1,
+    },
+  ]);
+  const frames = await map(orig);
+  expect(frames).toEqual(orig);
+});
