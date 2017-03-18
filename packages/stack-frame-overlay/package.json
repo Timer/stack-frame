@@ -1,0 +1,50 @@
+{
+  "name": "stack-frame-overlay",
+  "version": "0.0.0",
+  "description": "An overlay for displaying stack frames.",
+  "main": "src/index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build && npm test",
+    "build": "../../node_modules/.bin/babel src/ -d lib/",
+    "test": "../../node_modules/.bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Timer/stack-frame/tree/master/packages/stack-frame-overlay"
+  },
+  "keywords": [
+    "overlay",
+    "syntax",
+    "error",
+    "red",
+    "box",
+    "redbox",
+    "crash",
+    "warning"
+  ],
+  "author": "Joe Haddad <timer150@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "lib/"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "jest": {
+    "setupFiles": [
+      "./src/__tests__/setupJest.js"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/fixtures/",
+      "setupJest.js"
+    ]
+  }
+}
