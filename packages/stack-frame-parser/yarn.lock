@@ -30,9 +30,9 @@ has-ansi@^2.0.0:
   dependencies:
     ansi-regex "^2.0.0"
 
-stack-frame@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.1.1.tgz#5c26cf274313e644ce4fe4fa4cc7c5da72e201c2"
+stack-frame@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/stack-frame/-/stack-frame-0.2.0.tgz#e35090373f6f847112d87d1362587d08c8ed92f2"
 
 strip-ansi@^3.0.0:
   version "3.0.1"
