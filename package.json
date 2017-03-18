@@ -3,7 +3,7 @@
   "scripts": {
     "postinstall": "lerna exec --concurrency=1 -- yarn&&lerna bootstrap",
     "publish": "lerna publish",
-    "start": "concurrently -k \"cd packages/stack-frame && yarn build -- -w\" \"cd packages/stack-frame-parser && yarn build -- -w\" \"cd packages/stack-frame-mapper && yarn build -- -w\" \"cd packages/stack-frame-unmapper && yarn build -- -w\" \"cd packages/stack-frame-utils && yarn build -- -w\"",
+    "start": "find ./packages -type d -maxdepth 1 | tail -n +2 | xargs -I {} echo \"cd {} && yarn build -- -w\" | sed -e 's/^/\"/g' -e 's/$/\"/g' | tr '\n' ' ' | xargs concurrently -k",
     "format": "prettier --single-quote --trailing-comma es5 --write 'packages/*/src/**/*.js'",
     "test": "tasks/test.sh",
     "docs": "lerna exec -- ../../node_modules/.bin/documentation readme src/**/*.js --section=API"
