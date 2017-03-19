@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-overlay",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An overlay for displaying stack frames.",
   "main": "lib/index.js",
   "scripts": {
@@ -29,12 +29,12 @@
   ],
   "dependencies": {
     "anser": "^1.2.5",
-    "ansi-html-themed": "^0.0.0",
+    "ansi-html-themed": "^0.1.0",
     "babel-code-frame": "^6.22.0",
     "babel-runtime": "^6.23.0",
     "stack-frame": "^0.2.0",
-    "stack-frame-mapper": "^0.2.0",
-    "stack-frame-parser": "^0.2.0"
+    "stack-frame-mapper": "^0.2.1",
+    "stack-frame-parser": "^0.2.1"
   },
   "devDependencies": {
     "rollup": "^0.41.6"

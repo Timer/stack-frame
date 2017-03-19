@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-mapper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Maps a stack frame to a sourcemap.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
@@ -18,10 +18,10 @@
     "babel-runtime": "^6.23.0",
     "settle-promise": "^1.0.0",
     "stack-frame": "^0.2.0",
-    "stack-frame-utils": "^0.3.0"
+    "stack-frame-utils": "^0.3.1"
   },
   "devDependencies": {
-    "stack-frame-parser": "^0.2.0"
+    "stack-frame-parser": "^0.2.1"
   },
   "jest": {
     "setupFiles": [

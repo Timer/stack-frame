@@ -1,6 +1,6 @@
 {
   "name": "ansi-html-themed",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Turns chalked code into pretty html.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",

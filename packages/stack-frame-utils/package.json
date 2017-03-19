@@ -1,6 +1,6 @@
 {
   "name": "stack-frame-utils",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Utilities for working with stack frames.",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
