@@ -11,6 +11,8 @@ function handler(callback: ErrorCallback, e: PromiseRejectionEvent): void {
   if (reason instanceof Error) {
     return callback(reason);
   }
+  // A non-error was rejected, we don't have a trace :(
+  // Look in your browser's devtools for more information
   return callback(new Error(reason));
 }
 

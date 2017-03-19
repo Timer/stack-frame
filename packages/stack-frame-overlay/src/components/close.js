@@ -21,4 +21,5 @@ function createClose(document: Document, callback: CloseCallback) {
   return hints;
 }
 
+export type { CloseCallback };
 export { createClose };

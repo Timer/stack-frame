@@ -12,7 +12,8 @@ function absolutifyCaret(component: Node) {
   const ccn = component.childNodes;
   for (let index = 0; index < ccn.length; ++index) {
     const c = ccn[index];
-    if (!(c instanceof HTMLElement) || c.tagName.toLowerCase() !== 'span') {
+    // $FlowFixMe
+    if (c.tagName.toLowerCase() !== 'span') {
       continue;
     }
     const _text = c.innerText;
@@ -23,7 +24,9 @@ function absolutifyCaret(component: Node) {
     if (text !== '|^') {
       continue;
     }
+    // $FlowFixMe
     c.style.position = 'absolute';
+    // $FlowFixMe
     removeNextBr(component, c);
   }
 }

@@ -5,7 +5,9 @@ const SHORTCUT_ESCAPE = 'SHORTCUT_ESCAPE',
 
 let boundHandler = null;
 
-function handler(callback, e: KeyboardEvent) {
+type ShortcutCallback = (type: string) => void;
+
+function handler(callback: ShortcutCallback, e: KeyboardEvent) {
   const { key, keyCode, which } = e;
   if (key === 'Escape' || keyCode === 27 || which === 27) {
     callback(SHORTCUT_ESCAPE);
@@ -16,7 +18,6 @@ function handler(callback, e: KeyboardEvent) {
   }
 }
 
-type ShortcutCallback = (type: string) => void;
 function register(target: EventTarget, callback: ShortcutCallback) {
   if (boundHandler !== null) return;
   boundHandler = handler.bind(undefined, callback);
@@ -29,4 +30,11 @@ function unregister(target: EventTarget) {
   boundHandler = null;
 }
 
-export { SHORTCUT_ESCAPE, SHORTCUT_LEFT, SHORTCUT_RIGHT, register, unregister };
+export {
+  SHORTCUT_ESCAPE,
+  SHORTCUT_LEFT,
+  SHORTCUT_RIGHT,
+  register,
+  unregister,
+  handler,
+};

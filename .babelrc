@@ -2,7 +2,8 @@
   "presets": [
     ["env", {
       "targets": {
-        "ie": 9
+        "ie": 9,
+        "uglify": true
       },
       "useBuiltIns": true
     }]

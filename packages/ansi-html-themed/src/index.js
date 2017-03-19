@@ -1,17 +1,15 @@
 /* @flow */
 import Anser from 'anser';
 
-const base01 = 'f5f5f5', // Lighter Background (Used for status bars)
-  base03 = '969896', // Comments, Invisibles, Line Highlighting
-  base05 = '333333', // Default Foreground, Caret, Delimiters, Operators
-  base08 = 'ed6a43', // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  base0B = '183691', // Strings, Inherited Class, Markup Code, Diff Inserted
-  base0C = '183691', // Support, Regular Expressions, Escape Characters, Markup Quotes
-  base0E = 'a71d5d'; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+const base01 = 'f5f5f5',
+  base03 = '969896',
+  base05 = '333333',
+  base08 = 'ed6a43',
+  base0B = '183691',
+  base0C = '183691',
+  base0E = 'a71d5d';
 
-// Map ANSI colors from what babel-code-frame uses to base16-github
-// See: https://github.com/babel/babel/blob/e86f62b304d280d0bab52c38d61842b853848ba6/packages/babel-code-frame/src/index.js#L9-L22
-const colors = {
+const defaultColors = {
   reset: [base05, 'transparent'],
   black: base05,
   red: base08 /* marker, bg-invalid */,
@@ -25,8 +23,9 @@ const colors = {
   darkgrey: base03,
 };
 
-function ansiHTML(txt: string) {
-  const arr = new Anser().ansiToJson(txt, {
+function generateAnsiHtml(text: string, colors: Object = {}) {
+  colors = Object.assign({}, defaultColors, colors);
+  const arr = new Anser().ansiToJson(text, {
     use_classes: true,
   });
 
@@ -44,7 +43,7 @@ function ansiHTML(txt: string) {
       const part = contentParts[_index].replace('\r', '');
       const color = fg == null
         ? null
-        : colors[fg.replace(/^ansi-(bright-)?/, '')];
+        : colors[fg] || colors[fg.replace(/^ansi-(bright-)?/, '')];
       if (color != null) {
         result += '<span style="color: #' + color + ';">' + part + '</span>';
       } else {
@@ -64,4 +63,4 @@ function ansiHTML(txt: string) {
   return result;
 }
 
-export { ansiHTML };
+export { generateAnsiHtml };

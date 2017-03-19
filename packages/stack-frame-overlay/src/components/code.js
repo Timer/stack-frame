@@ -10,7 +10,7 @@ import {
 } from '../styles';
 
 import codeFrame from 'babel-code-frame';
-import { ansiHTML } from '../ansiHTML';
+import { generateAnsiHtml } from 'ansi-html-themed';
 
 function createCode(
   document: Document,
@@ -53,7 +53,7 @@ function createCode(
       linesBelow: contextSize,
     }
   );
-  const htmlHighlight = ansiHTML(ansiHighlight);
+  const htmlHighlight = generateAnsiHtml(ansiHighlight);
   const code = document.createElement('code');
   code.innerHTML = htmlHighlight;
   absolutifyCaret(code);
@@ -62,9 +62,6 @@ function createCode(
   const ccn = code.childNodes;
   oLoop: for (let index = 0; index < ccn.length; ++index) {
     const node = ccn[index];
-    if (!(node instanceof HTMLElement)) {
-      continue;
-    }
     const ccn2 = node.childNodes;
     for (let index2 = 0; index2 < ccn2.length; ++index2) {
       const lineNode = ccn2[index2];
@@ -75,6 +72,7 @@ function createCode(
       if (text.indexOf(' ' + lineNum + ' |') === -1) {
         continue;
       }
+      // $FlowFixMe
       applyStyles(node, main ? primaryErrorStyle : secondaryErrorStyle);
       break oLoop;
     }

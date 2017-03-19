@@ -6,9 +6,9 @@ const black = '#293238',
   lightRed = '#fccfcf',
   yellow = '#fbf5b4';
 
-const overlayStyle = {
+const iframeStyle = {
+  'background-color': lightGray,
   position: 'fixed',
-  'box-sizing': 'border-box',
   top: '1em',
   left: '1em',
   bottom: '1em',
@@ -16,16 +16,19 @@ const overlayStyle = {
   width: 'calc(100% - 2em)',
   height: 'calc(100% - 2em)',
   'border-radius': '3px',
-  'background-color': lightGray,
-  padding: '4rem',
+  'box-shadow': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
   'z-index': 1337,
+};
+
+const overlayStyle = {
+  'box-sizing': 'border-box',
+  padding: '4rem',
   'font-family': 'Consolas, Menlo, monospace',
   color: black,
   'white-space': 'pre-wrap',
   overflow: 'auto',
   'overflow-x': 'hidden',
   'word-break': 'break-all',
-  'box-shadow': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
   'line-height': 1.5,
 };
 
@@ -156,6 +159,7 @@ const footerStyle = {
 };
 
 export {
+  iframeStyle,
   overlayStyle,
   hintsStyle,
   hintStyle,
