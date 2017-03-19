@@ -2,7 +2,7 @@
   "name": "stack-frame-overlay",
   "version": "0.0.0",
   "description": "An overlay for displaying stack frames.",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublishOnly": "npm run build && npm test",
     "build": "../../node_modules/.bin/babel src/ -d lib/",
@@ -27,8 +27,17 @@
   "files": [
     "lib/"
   ],
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "anser": "^1.2.5",
+    "babel-code-frame": "^6.22.0",
+    "stack-frame": "^0.2.0",
+    "stack-frame-mapper": "^0.2.0",
+    "stack-frame-parser": "^0.2.0"
+  },
+  "devDependencies": {
+    "rollup": "^0.41.6",
+    "webpack": "^2.2.1"
+  },
   "jest": {
     "setupFiles": [
       "./src/__tests__/setupJest.js"

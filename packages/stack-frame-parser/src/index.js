@@ -1,7 +1,7 @@
 //@flow
 import StackFrame from 'stack-frame';
 
-const regexExtractLocation = /\(?(.+?)(?:\:(\d+))?(?:\:(\d+))?\)?$/;
+const regexExtractLocation = /\(?(.+?)(?::(\d+))?(?::(\d+))?\)?$/;
 
 function extractLocation(token: string): [string, number, number] {
   return regexExtractLocation.exec(token).slice(1).map(v => {
@@ -14,7 +14,7 @@ function extractLocation(token: string): [string, number, number] {
 }
 
 const regexValidFrame_Chrome = /^\s*(at|in)\s.+(:\d+)/;
-const regexValidFrame_FireFox = /(^|@)\S+\:\d+|.+line\s+\d+\s+>\s+(eval|Function).+/;
+const regexValidFrame_FireFox = /(^|@)\S+:\d+|.+line\s+\d+\s+>\s+(eval|Function).+/;
 
 function parseStack(stack: string[]): StackFrame[] {
   const frames = stack
@@ -27,7 +27,7 @@ function parseStack(stack: string[]): StackFrame[] {
         let isEval = false;
         if (/ > (eval|Function)/.test(e)) {
           e = e.replace(
-            / line (\d+)(?: > eval line \d+)* > (eval|Function)\:\d+\:\d+/g,
+            / line (\d+)(?: > eval line \d+)* > (eval|Function):\d+:\d+/g,
             ':$1'
           );
           isEval = true;
@@ -41,7 +41,7 @@ function parseStack(stack: string[]): StackFrame[] {
       } else {
         // Strip eval, we don't care about it
         if (e.indexOf('(eval ') !== -1) {
-          e = e.replace(/(\(eval at [^\()]*)|(\)\,.*$)/g, '');
+          e = e.replace(/(\(eval at [^()]*)|(\),.*$)/g, '');
         }
         if (e.indexOf('(at ') !== -1) {
           e = e.replace(/\(at /, '(');

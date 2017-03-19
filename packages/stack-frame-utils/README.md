@@ -16,17 +16,6 @@ Utilities for working with stack frames.
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;ScriptLine>** 
 
-## getSourceMap
-
-Returns an instance of <code>[SourceMap](#sourcemap)</code> for a given fileUri and fileContents.
-
-**Parameters**
-
--   `fileUri` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The URI of the source file.
--   `fileContents` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The contents of the source file.
-
-Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[SourceMap](#sourcemap)>** 
-
 ## SourceMap
 
 A wrapped instance of a <code>[SourceMapConsumer](https://github.com/mozilla/source-map)</code>.
@@ -65,3 +54,14 @@ Returns the code for a given source file name.
 -   `sourceName` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the source file.
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+## getSourceMap
+
+Returns an instance of <code>[SourceMap](#sourcemap)</code> for a given fileUri and fileContents.
+
+**Parameters**
+
+-   `fileUri` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The URI of the source file.
+-   `fileContents` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The contents of the source file.
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[SourceMap](#sourcemap)>** 
