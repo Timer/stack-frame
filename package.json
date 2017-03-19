@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "postinstall": "lerna exec --concurrency=1 -- yarn&&lerna bootstrap",
+    "release": "lerna publish --exact",
     "start": "find ./packages -type d -maxdepth 1 | tail -n +2 | xargs -I {} echo \"cd {} && yarn build -- -w\" | sed -e 's/^/\"/g' -e 's/$/\"/g' | tr '\n' ' ' | xargs concurrently -k",
     "lint": "eslint 'packages/*/src/**/*.js'",
     "format": "prettier --single-quote --trailing-comma es5 --write 'packages/*/src/**/*.js'",
