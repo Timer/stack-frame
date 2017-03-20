@@ -6,9 +6,9 @@ anser@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.2.5.tgz#5dcfc956eaa373b9c23010dd20dabec2ce19475b"
 
-ansi-html-themed@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/ansi-html-themed/-/ansi-html-themed-0.0.0.tgz#b6ccb9ea40f7871bf0b8c5764414b88a095c923c"
+ansi-html-themed@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ansi-html-themed/-/ansi-html-themed-0.1.0.tgz#571235b4c7034475239c7457610e63d25d5a02fa"
   dependencies:
     anser "^1.2.5"
 
@@ -91,24 +91,32 @@ source-map@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
-stack-frame-mapper@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/stack-frame-mapper/-/stack-frame-mapper-0.2.0.tgz#d2169fa5da38d34e2091145aa9e3c958268da700"
+stack-frame-mapper@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/stack-frame-mapper/-/stack-frame-mapper-0.2.1.tgz#c918f211c6988d22e307a26ab18d1bb4c58b93c2"
   dependencies:
     babel-runtime "^6.23.0"
     settle-promise "^1.0.0"
     stack-frame "^0.2.0"
-    stack-frame-utils "^0.3.0"
+    stack-frame-utils "^0.3.1"
 
-stack-frame-parser@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/stack-frame-parser/-/stack-frame-parser-0.2.0.tgz#d7ab1f18ce55b81a703b3f679546bcb39960ce74"
+stack-frame-parser@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/stack-frame-parser/-/stack-frame-parser-0.2.1.tgz#b4630799818b12f19e294c4de4cba6e6c67e30ca"
   dependencies:
     stack-frame "^0.2.0"
 
-stack-frame-utils@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.3.0.tgz#84108ac8c34e49092d4c0e2545790cc494112a03"
+stack-frame-unmapper@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/stack-frame-unmapper/-/stack-frame-unmapper-0.3.1.tgz#e166ff61b9ed53cc45fed51932f755c18af07893"
+  dependencies:
+    babel-runtime "^6.23.0"
+    stack-frame "^0.2.0"
+    stack-frame-utils "^0.3.1"
+
+stack-frame-utils@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/stack-frame-utils/-/stack-frame-utils-0.3.1.tgz#dc01d429f6e5489b04f97a20dcc994548c5631cd"
   dependencies:
     babel-runtime "^6.23.0"
     source-map "^0.5.6"
