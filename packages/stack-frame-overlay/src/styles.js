@@ -28,7 +28,7 @@ const overlayStyle = {
   'white-space': 'pre-wrap',
   overflow: 'auto',
   'overflow-x': 'hidden',
-  'word-break': 'break-all',
+  'word-break': 'break-word',
   'line-height': 1.5,
 };
 
