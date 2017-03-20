@@ -1,0 +1,4 @@
+import '..'
+
+test('is registered', () => {
+})
