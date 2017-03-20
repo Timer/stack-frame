@@ -11,7 +11,9 @@ function register(limit: number = MAX_STACK_LENGTH) {
     restoreValue = Error.stackTraceLimit;
     Error.stackTraceLimit = limit;
     registered = true;
-  } catch (e) {}
+  } catch (e) {
+    // Not all browsers support this so we don't care if it errors
+  }
 }
 
 function unregister() {
@@ -19,7 +21,9 @@ function unregister() {
   try {
     Error.stackTraceLimit = restoreValue;
     registered = false;
-  } catch (e) {}
+  } catch (e) {
+    // Not all browsers support this so we don't care if it errors
+  }
 }
 
 export { register, unregister };

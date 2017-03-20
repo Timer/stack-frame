@@ -49,6 +49,7 @@ module.exports = {
     'no-duplicate-case': 'warn',
     'no-empty-character-class': 'warn',
     'no-empty-pattern': 'warn',
+    'no-empty': 'warn',
     'no-eval': 'warn',
     'no-ex-assign': 'warn',
     'no-extend-native': 'warn',
