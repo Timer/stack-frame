@@ -28,7 +28,7 @@ function createOverlay(
   // Create overlay
   const overlay = document.createElement('div');
   applyStyles(overlay, overlayStyle);
-  overlay.appendChild(createClose(window.document, closeCallback));
+  overlay.appendChild(createClose(document, closeCallback));
 
   // Create container
   const container = document.createElement('div');
@@ -59,11 +59,11 @@ function createOverlay(
 
   // Create trace
   container.appendChild(
-    createFrames(window.document, frames, frameSettings, contextSize)
+    createFrames(document, frames, frameSettings, contextSize)
   );
 
   // Show message
-  container.appendChild(createFooter(window.document));
+  container.appendChild(createFooter(document));
 
   return {
     overlay,

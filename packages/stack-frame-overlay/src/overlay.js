@@ -76,11 +76,15 @@ function render(name: string, message: string, resolvedFrames: StackFrame[]) {
   applyStyles(iframe, iframeStyle);
   iframeReference = iframe;
   iframe.onload = () => {
+    if (iframeReference == null) return;
+    const w = iframeReference.contentWindow;
+    const document = iframeReference.contentDocument;
+
     const {
       overlay,
       additional,
     } = createOverlay(
-      window.document,
+      document,
       name,
       message,
       resolvedFrames,
@@ -94,14 +98,11 @@ function render(name: string, message: string, resolvedFrames: StackFrame[]) {
         unmount();
       }
     );
-    if (iframeReference == null) return;
-    const w = iframeReference.contentWindow;
     if (w != null) {
       w.onkeydown = event => {
         keyEventHandler(type => shortcutHandler(type), event);
       };
     }
-    const document = iframeReference.contentDocument;
     injectCss(iframeReference.contentDocument, css);
     if (document.body != null) {
       document.body.appendChild(overlay);
