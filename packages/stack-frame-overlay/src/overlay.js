@@ -76,7 +76,9 @@ function render(name: string, message: string, resolvedFrames: StackFrame[]) {
   applyStyles(iframe, iframeStyle);
   iframeReference = iframe;
   iframe.onload = () => {
-    if (iframeReference == null) return;
+    if (iframeReference == null) {
+      return;
+    }
     const w = iframeReference.contentWindow;
     const document = iframeReference.contentDocument;
 

@@ -23,14 +23,18 @@ function registerUnhandledRejection(
   target: EventTarget,
   callback: ErrorCallback
 ) {
-  if (boundRejectionHandler !== null) return;
+  if (boundRejectionHandler !== null) {
+    return;
+  }
   boundRejectionHandler = rejectionHandler.bind(undefined, callback);
   // $FlowFixMe
   target.addEventListener('unhandledrejection', boundRejectionHandler);
 }
 
 function unregisterUnhandledRejection(target: EventTarget) {
-  if (boundRejectionHandler === null) return;
+  if (boundRejectionHandler === null) {
+    return;
+  }
   // $FlowFixMe
   target.removeEventListener('unhandledrejection', boundRejectionHandler);
   boundRejectionHandler = null;

@@ -33,6 +33,7 @@ module.exports = {
 
   rules: {
     'array-callback-return': 'warn',
+    'curly': ['warn', 'all'],
     'default-case': ['warn', { commentPattern: '^no default$' }],
     'dot-location': ['warn', 'property'],
     eqeqeq: ['warn', 'allow-null'],

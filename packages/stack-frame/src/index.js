@@ -90,7 +90,9 @@ class StackFrame {
    */
   toString(): string {
     const f = this.getFunctionName();
-    if (f == null) return this.getSource();
+    if (f == null) {
+      return this.getSource();
+    }
     return `${f} (${this.getSource()})`;
   }
 }

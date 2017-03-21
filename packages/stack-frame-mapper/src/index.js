@@ -16,7 +16,9 @@ async function map(
   const files = [];
   frames.forEach(frame => {
     const { fileName } = frame;
-    if (files.indexOf(fileName) !== -1) return;
+    if (files.indexOf(fileName) !== -1) {
+      return;
+    }
     files.push(fileName);
   });
   await settle(

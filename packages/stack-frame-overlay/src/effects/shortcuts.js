@@ -19,13 +19,17 @@ function keyHandler(callback: ShortcutCallback, e: KeyboardEvent) {
 }
 
 function registerShortcuts(target: EventTarget, callback: ShortcutCallback) {
-  if (boundKeyHandler !== null) return;
+  if (boundKeyHandler !== null) {
+    return;
+  }
   boundKeyHandler = keyHandler.bind(undefined, callback);
   target.addEventListener('keydown', boundKeyHandler);
 }
 
 function unregisterShortcuts(target: EventTarget) {
-  if (boundKeyHandler === null) return;
+  if (boundKeyHandler === null) {
+    return;
+  }
   target.removeEventListener('keydown', boundKeyHandler);
   boundKeyHandler = null;
 }

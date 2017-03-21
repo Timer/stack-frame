@@ -6,7 +6,9 @@ let restoreStackTraceValue: number = 10;
 const MAX_STACK_LENGTH: number = 50;
 
 function registerStackTraceLimit(limit: number = MAX_STACK_LENGTH) {
-  if (stackTraceRegistered) return;
+  if (stackTraceRegistered) {
+    return;
+  }
   try {
     restoreStackTraceValue = Error.stackTraceLimit;
     Error.stackTraceLimit = limit;
@@ -17,7 +19,9 @@ function registerStackTraceLimit(limit: number = MAX_STACK_LENGTH) {
 }
 
 function unregisterStackTraceLimit() {
-  if (!stackTraceRegistered) return;
+  if (!stackTraceRegistered) {
+    return;
+  }
   try {
     Error.stackTraceLimit = restoreStackTraceValue;
     stackTraceRegistered = false;

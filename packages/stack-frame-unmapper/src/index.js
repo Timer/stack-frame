@@ -31,7 +31,9 @@ async function unmap(
       return frame;
     }
     let { fileName } = frame;
-    if (fileName) fileName = path.normalize(fileName);
+    if (fileName) {
+      fileName = path.normalize(fileName);
+    }
     const splitCache1 = {}, splitCache2 = {}, splitCache3 = {};
     const source = map
       .getSources()

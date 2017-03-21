@@ -56,7 +56,9 @@ function insertBeforeBundle(
   actionElement
 ) {
   const children = document.getElementsByName('bundle-' + omitBundle);
-  if (children.length < 1) return;
+  if (children.length < 1) {
+    return;
+  }
   let first: ?Node = children[0];
   while (first != null && first.parentNode !== parent) {
     first = first.parentNode;
@@ -141,10 +143,14 @@ function createFrame(
   let url;
   if (!compiled && sourceFileName) {
     url = sourceFileName + ':' + sourceLineNumber;
-    if (sourceColumnNumber) url += ':' + sourceColumnNumber;
+    if (sourceColumnNumber) {
+      url += ':' + sourceColumnNumber;
+    }
   } else {
     url = fileName + ':' + lineNumber;
-    if (columnNumber) url += ':' + columnNumber;
+    if (columnNumber) {
+      url += ':' + columnNumber;
+    }
   }
 
   let needsHidden = false;
