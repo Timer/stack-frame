@@ -1,4 +1,3 @@
-import '..'
+import '..';
 
-test('is registered', () => {
-})
+test('is registered', () => {});

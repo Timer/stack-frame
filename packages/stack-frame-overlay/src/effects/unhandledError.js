@@ -1,9 +1,9 @@
 /* @flow */
-let boundHandler = null;
+let boundErrorHandler = null;
 
 type ErrorCallback = (error: Error) => void;
 
-function handler(callback: ErrorCallback, e: Event): void {
+function errorHandler(callback: ErrorCallback, e: Event): void {
   if (!e.error) return;
   // $FlowFixMe
   const { error } = e;
@@ -16,16 +16,19 @@ function handler(callback: ErrorCallback, e: Event): void {
   }
 }
 
-function register(target: EventTarget, callback: ErrorCallback) {
-  if (boundHandler !== null) return;
-  boundHandler = handler.bind(undefined, callback);
-  target.addEventListener('error', boundHandler);
+function registerUnhandledError(target: EventTarget, callback: ErrorCallback) {
+  if (boundErrorHandler !== null) return;
+  boundErrorHandler = errorHandler.bind(undefined, callback);
+  target.addEventListener('error', boundErrorHandler);
 }
 
-function unregister(target: EventTarget) {
-  if (boundHandler === null) return;
-  target.removeEventListener('error', boundHandler);
-  boundHandler = null;
+function unregisterUnhandledError(target: EventTarget) {
+  if (boundErrorHandler === null) return;
+  target.removeEventListener('error', boundErrorHandler);
+  boundErrorHandler = null;
 }
 
-export { register, unregister };
+export {
+  registerUnhandledError as register,
+  unregisterUnhandledError as unregister,
+};

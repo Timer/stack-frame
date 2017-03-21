@@ -3,11 +3,11 @@ const SHORTCUT_ESCAPE = 'SHORTCUT_ESCAPE',
   SHORTCUT_LEFT = 'SHORTCUT_LEFT',
   SHORTCUT_RIGHT = 'SHORTCUT_RIGHT';
 
-let boundHandler = null;
+let boundKeyHandler = null;
 
 type ShortcutCallback = (type: string) => void;
 
-function handler(callback: ShortcutCallback, e: KeyboardEvent) {
+function keyHandler(callback: ShortcutCallback, e: KeyboardEvent) {
   const { key, keyCode, which } = e;
   if (key === 'Escape' || keyCode === 27 || which === 27) {
     callback(SHORTCUT_ESCAPE);
@@ -18,23 +18,23 @@ function handler(callback: ShortcutCallback, e: KeyboardEvent) {
   }
 }
 
-function register(target: EventTarget, callback: ShortcutCallback) {
-  if (boundHandler !== null) return;
-  boundHandler = handler.bind(undefined, callback);
-  target.addEventListener('keydown', boundHandler);
+function registerShortcuts(target: EventTarget, callback: ShortcutCallback) {
+  if (boundKeyHandler !== null) return;
+  boundKeyHandler = keyHandler.bind(undefined, callback);
+  target.addEventListener('keydown', boundKeyHandler);
 }
 
-function unregister(target: EventTarget) {
-  if (boundHandler === null) return;
-  target.removeEventListener('keydown', boundHandler);
-  boundHandler = null;
+function unregisterShortcuts(target: EventTarget) {
+  if (boundKeyHandler === null) return;
+  target.removeEventListener('keydown', boundKeyHandler);
+  boundKeyHandler = null;
 }
 
 export {
   SHORTCUT_ESCAPE,
   SHORTCUT_LEFT,
   SHORTCUT_RIGHT,
-  register,
-  unregister,
-  handler,
+  registerShortcuts as register,
+  unregisterShortcuts as unregister,
+  keyHandler as handler,
 };

@@ -1,9 +1,12 @@
 /* @flow */
-let boundHandler = null;
+let boundRejectionHandler = null;
 
 type ErrorCallback = (error: Error) => void;
 
-function handler(callback: ErrorCallback, e: PromiseRejectionEvent): void {
+function rejectionHandler(
+  callback: ErrorCallback,
+  e: PromiseRejectionEvent
+): void {
   if (e == null || e.reason == null) {
     return callback(new Error('Unknown'));
   }
@@ -16,18 +19,24 @@ function handler(callback: ErrorCallback, e: PromiseRejectionEvent): void {
   return callback(new Error(reason));
 }
 
-function register(target: EventTarget, callback: ErrorCallback) {
-  if (boundHandler !== null) return;
-  boundHandler = handler.bind(undefined, callback);
+function registerUnhandledRejection(
+  target: EventTarget,
+  callback: ErrorCallback
+) {
+  if (boundRejectionHandler !== null) return;
+  boundRejectionHandler = rejectionHandler.bind(undefined, callback);
   // $FlowFixMe
-  target.addEventListener('unhandledrejection', boundHandler);
+  target.addEventListener('unhandledrejection', boundRejectionHandler);
 }
 
-function unregister(target: EventTarget) {
-  if (boundHandler === null) return;
+function unregisterUnhandledRejection(target: EventTarget) {
+  if (boundRejectionHandler === null) return;
   // $FlowFixMe
-  target.removeEventListener('unhandledrejection', boundHandler);
-  boundHandler = null;
+  target.removeEventListener('unhandledrejection', boundRejectionHandler);
+  boundRejectionHandler = null;
 }
 
-export { register, unregister };
+export {
+  registerUnhandledRejection as register,
+  unregisterUnhandledRejection as unregister,
+};
