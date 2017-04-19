@@ -3,8 +3,8 @@
 
 
 anser@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/anser/-/anser-1.2.5.tgz#5dcfc956eaa373b9c23010dd20dabec2ce19475b"
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/anser/-/anser-1.2.7.tgz#fb1a41a05ffdef5b9e33d5d64794765fd76524e0"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
