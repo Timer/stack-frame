@@ -19,9 +19,6 @@ import {
   register as registerStackTraceLimit,
   unregister as unregisterStackTraceLimit,
 } from './effects/stackTraceLimit';
-import {
-  permanentRegister as permanentRegisterConsole,
-} from './effects/proxyConsole';
 
 import {
   consume as consumeError,
@@ -209,26 +206,6 @@ function inject() {
   registerPromise(window, error => crash(error, true));
   registerShortcuts(window, shortcutHandler);
   registerStackTraceLimit();
-
-  permanentRegisterConsole('error', warning => {
-    const nIndex = warning.indexOf('\n');
-    let message = warning;
-    if (nIndex !== -1) {
-      message = message.substring(0, nIndex);
-    }
-    const stack = warning.substring(nIndex + 1);
-    window.requestAnimationFrame(function() {
-      return crash(
-        // $FlowFixMe
-        {
-          message: message,
-          stack: stack,
-          __unmap_source: '/static/js/bundle.js',
-        },
-        false
-      );
-    });
-  });
 }
 
 function uninject() {
