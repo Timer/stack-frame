@@ -79,10 +79,7 @@ function render(name: string, message: string, resolvedFrames: StackFrame[]) {
     const w = iframeReference.contentWindow;
     const document = iframeReference.contentDocument;
 
-    const {
-      overlay,
-      additional,
-    } = createOverlay(
+    const { overlay, additional } = createOverlay(
       document,
       name,
       message,
@@ -114,11 +111,9 @@ function render(name: string, message: string, resolvedFrames: StackFrame[]) {
 function renderErrorByIndex(index: number) {
   currReferenceIndex = index;
 
-  const {
-    error,
-    unhandledRejection,
-    enhancedFrames,
-  } = getErrorRecord(errorReferences[index]);
+  const { error, unhandledRejection, enhancedFrames } = getErrorRecord(
+    errorReferences[index]
+  );
 
   if (unhandledRejection) {
     render(

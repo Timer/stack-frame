@@ -69,7 +69,7 @@ class SourceMap {
 }
 
 function extractSourceMapUrl(fileUri: string, fileContents: string) {
-  const regex = /\/\/[#@] ?sourceMappingURL=([^\s'"]+)\s*$/mg;
+  const regex = /\/\/[#@] ?sourceMappingURL=([^\s'"]+)\s*$/gm;
   let match = null;
   for (;;) {
     let next = regex.exec(fileContents);
