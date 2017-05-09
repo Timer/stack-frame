@@ -108,7 +108,6 @@ function frameDiv(document: Document, functionName, url, internalUrl) {
   applyStyles(frameLink, linkStyle);
   const frameAnchor = document.createElement('a');
   applyStyles(frameAnchor, anchorStyle);
-  //frameAnchor.href = url
   frameAnchor.appendChild(document.createTextNode(cleanedUrl));
   frameLink.appendChild(frameAnchor);
   frame.appendChild(frameLink);

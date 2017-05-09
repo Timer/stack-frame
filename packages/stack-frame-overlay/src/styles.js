@@ -15,6 +15,7 @@ const iframeStyle = {
   right: '1em',
   width: 'calc(100% - 2em)',
   height: 'calc(100% - 2em)',
+  border: 'none',
   'border-radius': '3px',
   'box-shadow': '0 0 6px 0 rgba(0, 0, 0, 0.5)',
   'z-index': 1337,
